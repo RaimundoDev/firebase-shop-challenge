@@ -4,11 +4,10 @@ Essa aplicação foi criada usando ReactJS (com create-react-app) para o fronten
 
 ## Instalação
 
-Para utilizar, primeiramente instale os módulos e em seguida produza uma versão de produção da aplicação.
+Para utilizar, primeiramente instale os módulos.
 
 ```
 npm install
-npm run build
 ```
 
 Após isso, é necessário que instale, se já não tiver, as ferramentas de [linha de comando do Firebase](https://firebase.google.com/docs/cli/)
@@ -52,16 +51,94 @@ Procure por uma linha parecida com essa:
 Copie o link da API e coloque no arquivo **apiURL.js**, localizado na pasta **./src/** e anexe no final **/api/products/**.
 
 ```javascript
-//Exemplo 
+// Exemplo 
 
 export const apiURL = "http://localhost:5001/fir-shop-fullstack-76e03/us-central1/webApi/api/products/"
+```
+
+A API espera recebe os dados no `body` da requisição, e retorna erro caso os dados entregues não sejam os esperados.
+
+```javascript
+// Exemplo de objeto 
+
+{
+    "name" : "Game",
+    "img" : "https://image.jpeg",
+    "price" : 100,
+    "platform" : ["Windows", "Mac", "Linux"],
+    "genres" : ["Ação", "Aventura"]
+}
+```
+
+### Exemplos de uso da API com Fetch
+
+```javascript
+
+const URL = 'http://localhost:5001/fir-shop-fullstack-76e03/us-central1/webApi/api/products/';
+
+// Metódo GET (Retorna todos os usuários);
+
+const allProducts = async () => {
+  await (fetch(URL)
+    .then((res) => console.log(res.json));
+};
+
+
+// Método GET (Retorna um usuário)
+
+const product = async (productId) => {
+await (fetch(`${URL}${productId}`)
+    .then((res) => console.log(res.json));
+};
+
+
+// Método POST (Adiciona um produto)
+
+const addProduct = (productData) => {
+  fetch(URL, {
+    method: 'POST',
+    mode: 'cors',
+    headers: {'content-type': 'application/json'},
+    body: JSON.stringfy(productData);
+  });
+};
+
+
+// Método DELETE (Delete um usuário)
+
+const deleteProduct = (productId) => {
+  fetch(`${URL}${productId}`, {
+    method: 'delete',
+    mode: 'cors'
+  });
+};
+
+
+// Método PUT (Edita um produto)
+
+const updateProduct = (productId, productData) => {
+  fetch(`${URL}${productId}`, {
+    method: 'PUT',
+    mode: 'cors',
+    headers: {'content-type': 'application/json'},
+    body: JSON.stringfy(productData);
+  });
+};
+
+```
+
+### Acessando a página
+
+Após realizar as modificações no arquivo **apiURL.js**, use o comando `npm run build` para criar uma versão de produção ou use `npm run start` para usar a versão de desenvolvimento. Após isso inicie os emuladores.
+
+```
+npm run build # ou npm run start
+firebase emulators:start
 ```
 
 ## Página Inicial
 
 Se tudo correr bem, verá a página inicial.
-
-
 
 ## Deploy
 
@@ -75,10 +152,10 @@ firebase deploy
 
 Todos os comandos usualmente disponíveis pelo `create-react-app` estão disponíveis, e é possível usar o `npm start` para testar o frontend, mesmo com os emuladores funcionando.
 
-### `npm start`
+`npm start`
 
-### `npm test`
+`npm test`
 
-### `npm run build`
+`npm run build`
 
-### `npm run eject`
+`npm run eject`
