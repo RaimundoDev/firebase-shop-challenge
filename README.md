@@ -30,9 +30,9 @@ Após a criação do projeto, escolha a opção `> Use an existing project` e se
 
 ### Functions Setup
 
-Nas configurações das Funções (Functions Setup), seja cuidado para não sobrescrever o arquivo **index.js**. Os outros arquivos podem ser sobrescritos.
+Nas configurações das Funções (Functions Setup), seja cuidadoso para não sobrescrever o arquivo **index.js**. Os outros arquivos podem ser sobrescritos.
 
-Em seguida, instale as dependências quando foi solicitado.
+Em seguida, instale as dependências quando for solicitado.
 
 ### Hosting Setup
 
@@ -54,7 +54,7 @@ Copie o link da API e coloque no arquivo **apiURL.js**, localizado na pasta **./
 ```javascript
 //Exemplo 
 
-export const apiURL = "http function initialized (http://localhost:5001/fir-shop-fullstack-76e03/us-central1/webApi/api/products/"
+export const apiURL = "http://localhost:5001/fir-shop-fullstack-76e03/us-central1/webApi/api/products/"
 ```
 
 ## Página Inicial
@@ -65,8 +65,8 @@ Se tudo correr bem, verá a página inicial.
 
 ## Deploy
 
-Para realizar o deploy, se não houver nenhum problema, basta digitar o seguinte abaixo:
-**Não é possível fazer o deploy da aplicação com o [plano gratuito Spark](https://firebase.google.com/pricing/).**
+Para realizar o deploy, se não houver nenhum problema, basta digitar o seguinte abaixo(**Não é possível fazer o deploy da aplicação com o [plano gratuito Spark](https://firebase.google.com/pricing/).**):
+
 ```
 firebase deploy
 ```
